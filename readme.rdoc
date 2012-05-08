@@ -1,4 +1,4 @@
-bing_translate_yaml is a simple Ruby on Rails plugin to translate your YAML files using Bing.
+bing_translate_yaml is a simple Ruby on Rails plugin for translating your YAML files using Bing.
 
 
 == Installation
