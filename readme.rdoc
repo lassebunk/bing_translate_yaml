@@ -1,0 +1,30 @@
+bing_translate_yaml is a simple Ruby on Rails plugin to translate your YAML files using Bing.
+
+
+== Installation
+
+In your <em>Gemfile</em>:
+
+  gem 'bing_translate_yaml'
+  
+Then run <code>bundle install</code>.
+
+== Example
+
+Make sure you have your translation files in e.g.:
+
+  config/locales/en.yml (English)
+  config/locales/de.yml (German)
+  config/locales/es.yml (Spanish)
+
+Run:
+
+  $ rake translate from=en to=es
+  
+This will create (or update) the following file:
+
+  config/locales/es.yml
+
+Enjoy :-)
+
+Copyright (c) 2012 Lasse Bunk, released under the MIT license
