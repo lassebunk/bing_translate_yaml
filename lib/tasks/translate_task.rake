@@ -44,7 +44,9 @@ def translate_hash(yaml)
   yaml.keys.each do |key|
     source = yaml[key]
     
-    if source.is_a?(String)
+    if source.is_a?(Symbol)
+      translated = source
+    elsif source.is_a?(String)
       translated = translate_string(source)
     elsif source.is_a?(Hash)
       translated = translate_hash(source)
