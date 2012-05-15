@@ -81,7 +81,11 @@ def translate_string(source)
   xml = Net::HTTP.get_response(URI.parse(url)).body
 
   doc = REXML::Document.new(xml)
-  dest = doc.elements["string"].text.html_safe.gsub("% {", "%{")
+  if element = doc.elements["string"]
+    dest = element.text.html_safe.gsub("% {", "%{")
+  else
+    dest = ""
+  end
   
   puts "#{source} => #{dest}"
   
