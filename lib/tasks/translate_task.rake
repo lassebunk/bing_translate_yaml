@@ -1,11 +1,17 @@
 require 'net/http'
 require 'rexml/document'
+require 'bing_translator'
 
 desc "Translate your YAML files using Bing."
 task :translate => :environment do
   @from_locale = ENV["from"]
+  raise "need to specify from=<locale>" unless @from_locale
+  
   @to_locale = ENV["to"]
-  @app_id = ENV["app_id"] || "TWwfmo09qPdsxVfnXUMCRHAyk2dGOaodKYVOvbyu3m5Y*"
+  raise "need to specify to=<locale>" unless @to_locale
+  
+  @app_id = ENV["app_id"]
+  raise "need to specify app_id=<Your Bing API key>" unless @app_id
   
   puts "Translating..."
   
@@ -77,17 +83,13 @@ end
 def translate_string(source)
   return "" unless source
   
-  url = "http://api.microsofttranslator.com/v2/Http.svc/Translate?appId=#{@app_id}&text=#{CGI::escape(source)}&from=#{@from_locale}&to=#{@to_locale}"
-  xml = Net::HTTP.get_response(URI.parse(url)).body
-
-  doc = REXML::Document.new(xml)
-  if element = doc.elements["string"]
-    dest = element.text.html_safe.gsub("% {", "%{")
-  else
-    dest = ""
-  end
+  dest = translator.translate(source, :from => @from_locale, :to => @to_locale)
   
   puts "#{source} => #{dest}"
   
   dest
+end
+
+def translator
+  @translator ||= BingTranslator.new @app_id
 end
