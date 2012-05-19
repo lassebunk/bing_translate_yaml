@@ -29,6 +29,6 @@ Enjoy :-)
 
 == Thanks
 
-  Thanks to Ricky Elrod for his excellent and simple bing_translator gem!
+Thanks to Ricky Elrod for his excellent and simple bing_translator gem!
 
 Copyright (c) 2012 Lasse Bunk, released under the MIT license
