@@ -27,7 +27,7 @@ This will create (or update) the following file:
 
 Enjoy :-)
 
-== TODO
+== Todo's
 
 * Encapsulate all translation logic in separate class
 
