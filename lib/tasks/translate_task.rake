@@ -10,8 +10,11 @@ task :translate => :environment do
   @to_locale = ENV["to"]
   raise "need to specify to=<locale>" unless @to_locale
   
-  @app_id = ENV["app_id"]
-  raise "need to specify app_id=<Your Bing API key>" unless @app_id
+  @client_id = ENV["client_id"]
+  raise "need to specify client_id=<Your Bing Azure Client ID>" unless @client_id
+  
+  @client_secret = ENV["client_secret"]
+  raise "need to specify client_secret=<Your Bing Azure Client Secret>" unless @client_secret
   
   @add_path = ENV["add_path"] || nil
   
@@ -94,5 +97,5 @@ def translate_string(source)
 end
 
 def translator
-  @translator ||= BingTranslator.new @app_id
+  @translator ||= BingTranslator.new(@client_id, @client_secret)
 end
