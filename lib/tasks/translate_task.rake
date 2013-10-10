@@ -13,10 +13,13 @@ task :translate => :environment do
   @app_id = ENV["app_id"]
   raise "need to specify app_id=<Your Bing API key>" unless @app_id
   
+  @add_path = ENV["add_path"] || nil
+  
+  
   puts "Translating..."
   
-  source_path = "#{Rails.root}/config/locales/#{@from_locale}.yml"
-  dest_path = "#{Rails.root}/config/locales/#{@to_locale}.yml"
+  source_path = "#{Rails.root}/config/locales/#{@from_locale}#{@add_path}.yml"
+  dest_path = "#{Rails.root}/config/locales/#{@to_locale}#{@add_path}.yml"
   
   if File.exists?(source_path)
     source_yaml = YAML::load(File.open(source_path))
