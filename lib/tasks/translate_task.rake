@@ -45,7 +45,7 @@ task :translate => :environment do
   
   out = { @to_locale => translated.deep_merge(dest) }
   
-  File.open(dest_path, 'w') {|f| YAML.dump(out, f) }
+  File.open(dest_path, 'w') {|f| f.write out.to_yaml }
   
   puts "Done!"
 end
