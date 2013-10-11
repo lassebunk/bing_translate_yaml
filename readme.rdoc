@@ -19,7 +19,7 @@ Make sure you have your translation files in e.g.:
 
 Run:
 
-  $ rake translate from=en to=es app_id="<Your Microsoft API Application ID>"
+  $ rake translate from=en to=es client_id="<Your Microsoft API client ID>" client_secret="<Your Microsoft API client secret>"
   
 This will create (or update) the following file:
 
@@ -27,13 +27,9 @@ This will create (or update) the following file:
 
 Enjoy :-)
 
-== Todo's
-
-* Encapsulate all translation logic in separate class
-
 
 == Thanks
 
 Thanks to Ricky Elrod for his excellent and simple bing_translator gem!
 
-Copyright (c) 2012 Lasse Bunk, released under the MIT license
+Copyright (c) 2012 Lasse Bunk, Kelly Mahan, released under the MIT license
