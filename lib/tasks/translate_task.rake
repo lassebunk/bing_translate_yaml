@@ -1,6 +1,7 @@
 require 'net/http'
 require 'rexml/document'
 require 'bing_translator'
+require 'yaml'
 
 desc "Translate your YAML files using Bing."
 task :translate => :environment do
@@ -9,9 +10,12 @@ task :translate => :environment do
   
   @to_locale = ENV["to"]
   raise "need to specify to=<locale>" unless @to_locale
+
+  @client_id = ENV["client_id"]
+  raise "need to specify client_id=<Your microsoft client_id>" unless @client_id
   
-  @app_id = ENV["app_id"]
-  raise "need to specify app_id=<Your Bing API key>" unless @app_id
+  @client_secret = ENV["client_secret"]
+  raise "need to specify client_secret=<Your microsoft client_secret>" unless @client_secret
   
   puts "Translating..."
   
@@ -38,8 +42,8 @@ task :translate => :environment do
   translated = translate_hash(source)
   
   out = { @to_locale => translated.deep_merge(dest) }
-  
-  File.open(dest_path, 'w') {|f| YAML.dump(out, f) }
+
+  File.open(dest_path, 'wb') {|f|  f.write out.to_yaml }
   
   puts "Done!"
 end
@@ -91,5 +95,5 @@ def translate_string(source)
 end
 
 def translator
-  @translator ||= BingTranslator.new @app_id
+  @translator ||= BingTranslator.new @client_id, @client_secret
 end
