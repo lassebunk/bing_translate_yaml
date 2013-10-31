@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "bing_translate_yaml"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.author = "Lasse Bunk"
   s.email = "lassebunk@gmail.com"

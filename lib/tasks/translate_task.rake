@@ -43,7 +43,7 @@ task :translate => :environment do
   
   out = { @to_locale => translated.deep_merge(dest) }
 
-  File.open(dest_path, 'w') {|f|  YAML.dump(out, f) }
+  File.open(dest_path, 'wb') {|f|  f.write out.to_yaml }
   
   puts "Done!"
 end
@@ -87,7 +87,7 @@ end
 def translate_string(source)
   return "" unless source
   
-  dest = translator.translate(source, :from => @from_locale, :to => @to_locale).to_s.encode('UTF-8')
+  dest = translator.translate(source, :from => @from_locale, :to => @to_locale)
   
   puts "#{source} => #{dest}"
   
