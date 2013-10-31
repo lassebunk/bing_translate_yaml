@@ -19,7 +19,7 @@ Make sure you have your translation files in e.g.:
 
 Run:
 
-  $ rake translate from=en to=es app_id="<Your Microsoft API Application ID>"
+  $ rake translate from=en to=es client_id="<your microsoft client_id>" client_secret="<your microsoft client_secret>"
   
 This will create (or update) the following file:
 

@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "bing_translate_yaml"
-  s.version = "0.1.7"
+  s.version = "0.2.0"
 
   s.author = "Lasse Bunk"
   s.email = "lassebunk@gmail.com"
@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary = "Simple Ruby on Rails plugin for translating your YAML files using Bing."
   s.homepage = "http://github.com/lassebunk/bing_translate_yaml"
   
-  s.add_dependency "bing_translator", "~> 0.0.2"
+  s.add_dependency "bing_translator", "4.1.1"
   s.files = Dir['lib/**/*']
   s.require_paths = ["lib"]
 end
